@@ -1,36 +1,43 @@
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core'
 
-export default function Producer_delete(props){
+export default function Producer_delete(props) {
     //import moment
-    var moment = require('moment');
-    const currentDate = moment().format('YYYY-MM-DD');
-    console.log(currentDate);
+    var moment = require('moment')
+    const currentDate = moment().format('YYYY-MM-DD')
+    console.log(currentDate)
     //connect Airtable
-    var Airtable = require('airtable');
-    var base = new Airtable({apiKey: 'keyUAL9XklAOyi08b'}).base('apphBomMb49ieU17N');
+    var Airtable = require('airtable')
+    var base = new Airtable({ apiKey: 'keyUAL9XklAOyi08b' }).base('apphBomMb49ieU17N')
     //when delete button is clicked
-    function handleDelete(){
-        props.delete_id.map((deleteId) =>(
-            base('producer').update([
-            {"id": deleteId,
-                "fields": {
-                "producer_deletetime": currentDate
-                }
-            }], function(err, records) {
-            if (err) {
-                console.error(err);
-                alert(err);
-                return;
-            }
-            alert("完成刪除");
-            window.location.reload();
-            })
-        ))
+    function handleDelete() {
+        props.delete_id.map((deleteId) =>
+            base('producer').update(
+                [
+                    {
+                        id: deleteId,
+                        fields: {
+                            producer_deletetime: currentDate,
+                        },
+                    },
+                ],
+                function (err, records) {
+                    if (err) {
+                        console.error(err)
+                        alert(err)
+                        return
+                    }
+                    alert('完成刪除')
+                    window.location.reload()
+                },
+            ),
+        )
     }
 
-    return(
+    return (
         <div>
-            <Button variant="contained" color="secondary" onClick={handleDelete}>刪除</Button>
+            <Button variant="contained" color="secondary" onClick={handleDelete}>
+                刪除
+            </Button>
         </div>
     )
 }

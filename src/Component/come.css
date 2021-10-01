@@ -1,16 +1,16 @@
 body {
-  width: auto;
-  height: 100%;
-  background: url("bg.jpeg"), transparent;
+    width: auto;
+    height: 100%;
+    background: url('bg.jpeg'), transparent;
 }
 
 h1 {
-  text-align: center;
-  color: black;
-  font-family: fantasy;
-  font-size: 50px;
+    text-align: center;
+    color: black;
+    font-family: fantasy;
+    font-size: 50px;
 }
 
 .line {
-  background-color: black;
+    background-color: black;
 }
